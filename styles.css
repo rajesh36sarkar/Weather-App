@@ -1,0 +1,30 @@
+body {
+  background-image: url("https://images.unsplash.com/photo-1501973801540-537f08ccae7b");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  transition: background-image 1s ease-in-out, filter 0.6s;
+  animation: slowZoom 25s ease-in-out infinite alternate;
+  font-family: "Inter", sans-serif;
+}
+
+@keyframes slowZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+
+.fade-bg {
+  filter: brightness(0.75) blur(2px);
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+.fade-in-slow {
+  animation: fadeIn 1.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}

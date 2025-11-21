@@ -3,75 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Weather App</title>
-
-  <link rel="icon"
-    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☀️</text></svg>" />
-
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
-
   <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body class="bg-cover bg-center bg-fixed min-h-screen">
+<body>
 
-  <div class="app-wrap flex flex-col min-h-screen py-6 px-4">
-    <header class="flex justify-center items-center mb-8">
-      <input
-        type="text"
-        autocomplete="off"
-        class="search-box w-full max-w-sm p-4 rounded-full border-none outline-none bg-white/20
-               text-white placeholder-white/80 text-xl font-light transition-all duration-300
-               focus:bg-white/40 focus:scale-105 shadow-lg"
-        placeholder="Search for a city..."
+  <div class="app-wrap min-h-screen flex flex-col p-4 sm:p-8">
+
+    <!-- Search Box -->
+    <header class="flex justify-center mb-6">
+      <input 
+        type="text" 
+        class="search-box w-full max-w-sm p-3 rounded-full bg-white/20 text-white placeholder-white/70 text-lg outline-none focus:bg-white/30 transition-all"
+        placeholder="Search city..."
       />
     </header>
 
-    <main class="flex-1 flex flex-col items-center justify-center text-center text-white">
+    <main class="flex flex-col items-center text-center text-white flex-1">
 
+      <!-- Loading -->
       <div id="loading" class="hidden text-xl font-semibold animate-pulse">
-        Fetching weather data...
+        Fetching weather...
       </div>
 
-      <!-- WEATHER CARD -->
-      <div id="weather-display"
-        class="hidden w-full max-w-md p-6 bg-white/10 rounded-3xl shadow-2xl backdrop-blur-md fade-in">
+      <!-- Current Weather -->
+      <div id="weather-display" class="hidden bg-white/10 p-6 rounded-3xl shadow-xl backdrop-blur-xl w-full max-w-md fade-in">
 
-        <section class="mb-6">
-          <div id="city" class="text-4xl font-bold mb-1"></div>
-          <div id="date" class="text-sm font-light text-white/80"></div>
-        </section>
-
-        <div class="current mb-6">
-          <div id="temp" class="text-8xl font-extrabold my-6 text-shadow-lg"></div>
-          <div id="weather" class="text-3xl font-semibold italic mb-3 text-shadow-md"></div>
-          <div id="hi-low" class="text-xl font-medium text-shadow-md"></div>
+        <div class="mb-4">
+          <div id="city" class="text-3xl font-bold"></div>
+          <div id="date" class="text-sm text-white/80"></div>
         </div>
 
-        <!-- NEW: Detailed Weather Report -->
-        <div id="details" class="grid grid-cols-2 gap-4 mt-4 text-sm text-white/90 fade-in-slow">
-          <div class="detail-box">Humidity: <span id="humidity"></span>%</div>
-          <div class="detail-box">Wind Speed: <span id="wind"></span> km/h</div>
-          <div class="detail-box">Feels Like: <span id="feels-like"></span>°C</div>
-          <div class="detail-box">Pressure: <span id="pressure"></span> hPa</div>
+        <div>
+          <div id="temp" class="text-7xl font-extrabold"></div>
+          <div id="weather" class="text-2xl italic mt-2"></div>
+          <div id="hi-low" class="text-lg mt-1"></div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mt-6 text-left text-sm">
+          <div>Humidity: <span id="humidity"></span>%</div>
+          <div>Wind: <span id="wind"></span> km/h</div>
+          <div>Feels Like: <span id="feels-like"></span>°C</div>
+          <div>Pressure: <span id="pressure"></span> hPa</div>
         </div>
 
       </div>
 
-      <!-- ERROR MESSAGE -->
-      <div id="error-message"
-        class="hidden text-center text-lg text-red-400 p-4 bg-red-900/50 rounded-lg shadow-md mt-4 fade-in">
+      <!-- 7-Day Forecast -->
+      <div id="forecast" class="hidden w-full max-w-3xl mt-10 fade-in">
+        <h2 class="text-2xl font-bold mb-4">7-Day Forecast</h2>
+        <div id="forecast-cards" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4"></div>
+      </div>
+
+      <!-- Error -->
+      <div id="error-message" class="hidden bg-red-800/60 text-red-200 p-4 rounded-lg shadow mt-4">
         <span id="error-text"></span>
       </div>
 
     </main>
+
   </div>
 
   <script src="script.js"></script>
+
 </body>
 </html>
