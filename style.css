@@ -1,55 +1,49 @@
-/* Base styles for the body, setting font and background image transition */
+/* Base styles */
 body {
   font-family: "Inter", sans-serif;
-  transition: background-image 0.5s ease-in-out;
-  /* Default background image for the app. Ensure 'bg.jpg' is in the same directory. */
+  transition: background-image 0.6s ease-in-out;
   background-image: url("bg.jpg");
 }
-/* Styles for the main application wrapper, applying a semi-transparent dark background and backdrop blur effect */
+
 .app-wrap {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(8px);
 }
-/* Animation class for fading in elements */
+
+/* Fade animations */
 .fade-in {
-  animation: fadeIn 1s ease-in-out;
-}
-/* Keyframe animation for the fade-in effect */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-/* Custom responsive text shadows for better readability on various backgrounds */
-.text-shadow-lg {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-.text-shadow-md {
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.8s ease-in-out;
 }
 
-/* Media queries for specific responsive adjustments for very small screens (<= 639px) */
+.fade-in-slow {
+  animation: fadeIn 1.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Text shadow helpers */
+.text-shadow-lg {
+  text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.text-shadow-md {
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Detail weather box styling */
+.detail-box {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 10px;
+  border-radius: 10px;
+  text-shadow: 1px 1px 2px black;
+}
+
+/* Mobile adjustments */
 @media (max-width: 639px) {
-  .app-wrap {
-    padding-top: 1rem; /* Reduced top/bottom padding */
-    padding-bottom: 1rem;
-  }
-  .search-box {
-    padding: 0.75rem; /* Smaller padding for search input */
-    font-size: 1rem; /* Smaller font size for search input */
-  }
-  #temp {
-    font-size: 5rem; /* Adjusted temperature font size */
-  }
-  #weather {
-    font-size: 1.5rem; /* Adjusted weather condition font size */
-  }
-  #city {
-    font-size: 2rem; /* Adjusted city font size */
-  }
+  #temp { font-size: 5rem; }
+  #weather { font-size: 1.7rem; }
+  #city { font-size: 2.3rem; }
 }
